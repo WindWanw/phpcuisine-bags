@@ -67,7 +67,7 @@ class Enum
     {
 
         //如果状态码小于2000或者设置了转换，则返回0
-        if ($code < 2000 || in_array($code, self::MSG_TO_SUCCESS)) {
+        if ($code < 2000 || in_array($code, static::MSG_TO_SUCCESS)) {
             return self::DEFAULT;
         }
 
@@ -81,12 +81,13 @@ class Enum
     public function getMsg(int $code): string
     {
 
-        $msg = self::MSG;
+        $msg = static::MSG;
+        $d_msg = self::DEFAULT_MSG;
 
         if ($msg) {
 
             $msg_key = array_keys($msg);
-            $d_msg_key = array_keys(self::DEFAULT_MSG);
+            $d_msg_key = array_keys($d_msg);
 
             if ($intersect = array_intersect($msg_key, $d_msg_key)) {
                 throw new \Exception("无法定义默认的状态码:" . implode("|", $intersect), 1);
@@ -94,7 +95,7 @@ class Enum
             }
         }
 
-        $_msg = self::DEFAULT_MSG + $msg;
+        $_msg = $d_msg + $msg;
         ksort($_msg);
 
         return $_msg[$code];
