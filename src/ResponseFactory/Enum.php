@@ -46,7 +46,7 @@ class Enum
         self::LOGIN_ERROR => "登录失败",
     ];
 
-    protected function getEnumFromName(string $name): int
+    public function getEnumFromName(string $name): int
     {
 
         if ($name == "DEFAULT") {
@@ -62,7 +62,7 @@ class Enum
     /**
      * 获取状态码
      */
-    protected function getEnum(int $code): int
+    public function getEnum(int $code): int
     {
 
         //如果状态码小于2000或者设置了转换，则返回0
@@ -77,7 +77,7 @@ class Enum
     /**
      * 获取状态码对应的消息体
      */
-    protected function getMsg(int $code): string
+    public function getMsg(int $code): string
     {
 
         $msg = self::MSG;
