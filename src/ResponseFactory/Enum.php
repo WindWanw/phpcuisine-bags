@@ -30,6 +30,7 @@ class Enum
 
     //定义默认状态码对应的消息体
     const DEFAULT_MSG = [
+        self::DEFAULT => "操作成功",
         self::OK => "操作成功",
         self::C_SUCCESS => "添加成功",
         self::R_SUCCESS => "查询成功",
@@ -93,7 +94,8 @@ class Enum
             }
         }
 
-        $_msg = array_merge(self::DEFAULT_MSG, $msg);
+        $_msg = self::DEFAULT_MSG + $msg;
+        ksort($_msg);
 
         return $_msg[$code];
     }

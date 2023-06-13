@@ -90,7 +90,7 @@ class Response
         } else {
 
             $this->code = $this->enum->getEnumFromName("DEFAULT");
-            $this->msg = $this->enum->getMsg($this->enum->getEnumFromName("OK"));
+            $this->msg = $this->enum->getMsg($this->code);
             $this->data = [
                 "message" => $first,
                 "list" => $second
@@ -145,7 +145,7 @@ class Response
         } else {
 
             $this->code = $this->enum->getEnumFromName("ERROR");
-            $this->msg = $this->enum->getMsg($this->enum->getEnumFromName("ERROR"));
+            $this->msg = $this->enum->getMsg($this->code);
             $this->data = [
                 "message" => $first,
                 "list" => $second
@@ -168,8 +168,8 @@ class Response
 
             $data = $arguments[0];
 
-            $this->code = $this->enum->getEnum("DEFAULT");
-            $this->msg = $this->enum->getMsg($this->enum->getEnum("OK"));
+            $this->code = $this->enum->getEnumFromName("DEFAULT");
+            $this->msg = $this->enum->getMsg($this->code);
             $this->data = [
                 "message" => $this->msg,
                 "list" => $data
@@ -201,8 +201,8 @@ class Response
             ];
         } else {
 
-            $this->code = $this->enum->getEnum("DEFAULT");
-            $this->msg = $this->enum->getMsg($this->enum->getEnumFromName("OK"));
+            $this->code = $this->enum->getEnumFromName("DEFAULT");
+            $this->msg = $this->enum->getMsg($this->code);
             $this->data = [
                 "message" => $first,
                 "list" => $second
