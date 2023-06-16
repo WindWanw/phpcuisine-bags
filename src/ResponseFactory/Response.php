@@ -171,7 +171,6 @@ class Response
             $this->code = $this->enum->getEnumFromName("DEFAULT");
             $this->msg = $this->enum->getMsg($this->code);
             $this->data = [
-                "message" => $this->msg,
                 "list" => $data
             ];
         } else if ($count == 2) {
@@ -196,15 +195,13 @@ class Response
             $this->code = $this->enum->getEnum($first);
             $this->msg = $this->enum->getMsg($first);
             $this->data = [
-                "message" => $this->msg,
                 "list" => $second
             ];
         } else {
 
             $this->code = $this->enum->getEnumFromName("DEFAULT");
-            $this->msg = $this->enum->getMsg($this->code);
+            $this->msg = $first;
             $this->data = [
-                "message" => $first,
                 "list" => $second
             ];
         }
